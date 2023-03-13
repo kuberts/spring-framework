@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2021 the original author or authors.
+ * Copyright 2002-2023 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -154,7 +154,7 @@ public class LinkedCaseInsensitiveMap<V> implements Map<String, V>, Serializable
 
 	@Override
 	public boolean containsKey(Object key) {
-		return (key instanceof String && this.caseInsensitiveKeys.containsKey(convertKey((String) key)));
+		return (key instanceof String string && this.caseInsensitiveKeys.containsKey(convertKey(string)));
 	}
 
 	@Override
@@ -165,8 +165,8 @@ public class LinkedCaseInsensitiveMap<V> implements Map<String, V>, Serializable
 	@Override
 	@Nullable
 	public V get(Object key) {
-		if (key instanceof String) {
-			String caseInsensitiveKey = this.caseInsensitiveKeys.get(convertKey((String) key));
+		if (key instanceof String string) {
+			String caseInsensitiveKey = this.caseInsensitiveKeys.get(convertKey(string));
 			if (caseInsensitiveKey != null) {
 				return this.targetMap.get(caseInsensitiveKey);
 			}
@@ -177,8 +177,8 @@ public class LinkedCaseInsensitiveMap<V> implements Map<String, V>, Serializable
 	@Override
 	@Nullable
 	public V getOrDefault(Object key, V defaultValue) {
-		if (key instanceof String) {
-			String caseInsensitiveKey = this.caseInsensitiveKeys.get(convertKey((String) key));
+		if (key instanceof String string) {
+			String caseInsensitiveKey = this.caseInsensitiveKeys.get(convertKey(string));
 			if (caseInsensitiveKey != null) {
 				return this.targetMap.get(caseInsensitiveKey);
 			}
@@ -241,8 +241,8 @@ public class LinkedCaseInsensitiveMap<V> implements Map<String, V>, Serializable
 	@Override
 	@Nullable
 	public V remove(Object key) {
-		if (key instanceof String) {
-			String caseInsensitiveKey = removeCaseInsensitiveKey((String) key);
+		if (key instanceof String string) {
+			String caseInsensitiveKey = removeCaseInsensitiveKey(string);
 			if (caseInsensitiveKey != null) {
 				return this.targetMap.remove(caseInsensitiveKey);
 			}
